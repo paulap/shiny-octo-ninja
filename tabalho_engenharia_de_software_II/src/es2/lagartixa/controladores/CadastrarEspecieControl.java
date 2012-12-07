@@ -3,13 +3,14 @@ package es2.lagartixa.controladores;
 import es2.lagartixa.entidades.Genero;
 import es2.lagartixa.entidades.Lagartixa;
 
-public class CadastrarEspecie extends Lagartixa {
-	public CadastrarEspecie(String descricao, String nomePopular,
+public class CadastrarEspecieControl {
+	public void CadastrarEspecie(String descricao, String nomePopular,
 			String nomeCientifico, String especie, Genero genero) {
-		super(descricao, nomePopular, nomeCientifico, especie, genero);
+		new Lagartixa(descricao, nomePopular, nomeCientifico, especie);
+		//TODO gravar no bd
 	}
 
 	public void ConsultarEspecie() {
-		listar();
+		Lagartixa.listar();
 	}
 }

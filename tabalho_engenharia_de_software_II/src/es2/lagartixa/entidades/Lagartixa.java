@@ -20,14 +20,14 @@ public class Lagartixa {
 	}
 
 	public Lagartixa(String descricao, String nomePopular,
-			String nomeCientifico, String especie, Genero genero) {
+			String nomeCientifico, String especie) {
 		super();
 		setId();
 		setDescricao(descricao);
 		setNomePopular(nomePopular);
 		setNomeCientifico(nomeCientifico);
 		setEspecie(especie);
-		setGenero(genero);
+		setGenero(new Genero());
 		setLstHabitat(new ArrayList());
 	}
 
@@ -96,23 +96,26 @@ public class Lagartixa {
 		return especie;
 	}
 
-	public void listar() {
-		System.out.println("Nome Popular: " + getNomePopular());
-		System.out.println("Nome Cientifíco: " + getNomeCientifico());
-		System.out.println("Espécie: " + getEspecie());
-		System.out.println("Descrição: " + getDescricao());
-		if (getGenero() != null) {
-			System.out.println("\nGênero :");
-			getGenero().listar();
-		} else
-			System.out.println("\nGênero não informado.");
-		if (getLstHabitat().size() > 0 && !getLstHabitat().equals(null)) {
-			System.out.println("\nHabitat");
-			for (Object o : getLstHabitat()) {
-				((Habitat) o).listar();
-			}
-		} else
-			System.out.println("\nHabitat não informado.");
-
+	public static void listar() {
+		List<Lagartixa> as = null;
+		// TODO consultar lagartixas no bd
+		for (Lagartixa a : as) {
+			System.out.println("Nome Popular: " + a.getNomePopular());
+			System.out.println("Nome Cientifíco: " + a.getNomeCientifico());
+			System.out.println("Espécie: " + a.getEspecie());
+			System.out.println("Descrição: " + a.getDescricao());
+			if (a.getGenero() != null) {
+				System.out.println("\nGênero :");
+				a.getGenero().listar();
+			} else
+				System.out.println("\nGênero não informado.");
+			if (a.getLstHabitat().size() > 0 && !a.getLstHabitat().equals(null)) {
+				System.out.println("\nHabitat");
+				for (Object o : a.getLstHabitat()) {
+					((Habitat) o).listar();
+				}
+			} else
+				System.out.println("\nHabitat não informado.");
+		}
 	}
 }
